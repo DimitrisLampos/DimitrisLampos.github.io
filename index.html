@@ -4,329 +4,457 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dimitrios Lampos</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#F8F6F1;--surface:#FFFFFF;--ink:#1A1916;--ink2:#5A5850;--ink3:#9A9890;
-  --accent:#2B5F8E;--accent2:#C8873A;--line:#E2DFD8;
-  --serif:'Playfair Display',serif;--sans:'DM Sans',sans-serif;
+  --bg:#0A0A0A;--bg2:#111111;--bg3:#1A1A1A;
+  --ink:#E8E8E4;--ink2:#888884;--ink3:#444440;
+  --hi:#A8C5A0;--line:#222220;
+  --mono:'Space Mono',monospace;--sans:'Inter',sans-serif;
 }
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6}
-nav{position:sticky;top:0;z-index:100;background:rgba(248,246,241,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:16px 40px;}
-.nav-name{font-family:var(--serif);font-size:18px;font-weight:700;letter-spacing:-0.3px}
-.nav-links{display:flex;gap:28px}
-.nav-links a{text-decoration:none;color:var(--ink2);font-size:13px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s;cursor:pointer;}
-.nav-links a:hover{color:var(--accent)}
-section{padding:80px 40px;max-width:920px;margin:0 auto}
-section+section{border-top:1px solid var(--line)}
-.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:80px 40px 60px;max-width:920px;margin:0 auto;}
-.hero-eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:20px;}
-.hero h1{font-family:var(--serif);font-size:clamp(42px,6vw,72px);font-weight:700;line-height:1.08;letter-spacing:-1.5px;color:var(--ink);margin-bottom:28px;}
-.hero h1 em{color:var(--accent);font-style:italic}
-.hero-bio{font-size:17px;color:var(--ink2);max-width:540px;line-height:1.75;margin-bottom:40px;font-weight:300;}
-.hero-cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-.btn-primary{background:var(--accent);color:#fff;border:none;padding:12px 28px;border-radius:4px;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;letter-spacing:0.3px;transition:opacity 0.2s;}
-.btn-primary:hover{opacity:0.88}
-.btn-ghost{background:none;border:1.5px solid var(--line);color:var(--ink2);padding:12px 28px;border-radius:4px;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;letter-spacing:0.3px;transition:border-color 0.2s,color 0.2s;}
-.btn-ghost:hover{border-color:var(--ink2);color:var(--ink)}
-.hero-meta{display:flex;gap:40px;margin-top:60px;padding-top:32px;border-top:1px solid var(--line);}
-.hero-stat{display:flex;flex-direction:column;gap:4px}
-.hero-stat span:first-child{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--accent)}
-.hero-stat span:last-child{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--ink3)}
-.section-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent2);font-weight:500;margin-bottom:40px;}
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.skill-cat{background:var(--bg);padding:24px}
-.skill-cat h4{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin-bottom:14px}
-.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
-.skill-tag{font-size:12px;background:var(--surface);border:1px solid var(--line);padding:4px 10px;border-radius:2px;color:var(--ink2);}
-.timeline{display:flex;flex-direction:column;gap:0}
-.tl-item{display:grid;grid-template-columns:140px 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--line);}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:14px;line-height:1.6;min-height:100vh}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;border-bottom:1px solid var(--line);background:var(--bg);}
+.nav-logo{font-family:var(--mono);font-size:13px;color:var(--ink2);letter-spacing:0.5px}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:12px;color:var(--ink2);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color 0.15s;cursor:pointer;}
+.nav-links a:hover{color:var(--ink)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 80px;border-bottom:1px solid var(--line);}
+.hero-counter{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:2px;margin-bottom:32px;}
+.hero h1{font-family:var(--sans);font-weight:300;font-size:clamp(48px,7vw,96px);line-height:1.0;letter-spacing:-2px;color:var(--ink);margin-bottom:40px;}
+.hero h1 span{color:var(--ink3)}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+.hero-bio{font-size:14px;color:var(--ink2);max-width:420px;line-height:1.8;}
+.hero-bio strong{color:var(--hi);font-weight:400}
+.hero-meta{display:flex;gap:48px;flex-shrink:0}
+.hero-stat{display:flex;flex-direction:column;gap:4px;text-align:right}
+.hero-stat-n{font-family:var(--mono);font-size:24px;color:var(--ink);font-weight:700}
+.hero-stat-l{font-size:11px;color:var(--ink3);letter-spacing:1px;text-transform:uppercase}
+.wrap{max-width:960px;margin:0 auto;padding:0 48px}
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+.sec-header{display:flex;align-items:baseline;gap:24px;margin-bottom:48px;}
+.sec-num{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:1px}
+.sec-title{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--ink2);font-weight:400}
+.skills-list{display:flex;flex-direction:column}
+.skill-row{display:grid;grid-template-columns:160px 1fr;padding:16px 0;border-bottom:1px solid var(--line);align-items:start;}
+.skill-row:last-child{border-bottom:none}
+.skill-cat-name{font-size:12px;color:var(--ink3);padding-top:2px}
+.skill-items{display:flex;flex-wrap:wrap;gap:8px}
+.skill-item{font-size:12px;color:var(--ink2);border:1px solid var(--line);padding:4px 12px;transition:border-color 0.15s,color 0.15s;}
+.skill-item:hover{border-color:var(--ink3);color:var(--ink)}
+.timeline{display:flex;flex-direction:column}
+.tl-item{display:grid;grid-template-columns:160px 1fr;gap:32px;padding:40px 0;border-bottom:1px solid var(--line);}
 .tl-item:last-child{border-bottom:none}
-.tl-date{font-size:12px;color:var(--ink3);font-weight:500;letter-spacing:0.3px;padding-top:4px;line-height:1.5;}
-.tl-body h3{font-family:var(--serif);font-size:19px;font-weight:700;margin-bottom:4px;letter-spacing:-0.2px}
-.tl-org{font-size:13px;color:var(--accent);font-weight:500;margin-bottom:10px}
-.tl-bullets{margin-top:10px;padding-left:0;list-style:none}
-.tl-bullets li{font-size:13px;color:var(--ink2);line-height:1.65;padding:3px 0 3px 16px;position:relative;}
-.tl-bullets li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:1.5px;background:var(--accent2);}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.proj-card{background:var(--surface);border:1px solid var(--line);padding:28px;position:relative;overflow:hidden;transition:border-color 0.2s;}
-.proj-card:hover{border-color:var(--accent)}
-.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
-.proj-card:hover::before{transform:scaleX(1)}
-.proj-num{font-family:var(--serif);font-size:32px;color:var(--line);font-weight:700;line-height:1}
-.proj-title{font-family:var(--serif);font-size:17px;font-weight:700;margin:12px 0 10px;letter-spacing:-0.2px;line-height:1.35}
-.proj-course{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent2);margin-bottom:10px}
-.proj-desc{font-size:13px;color:var(--ink2);line-height:1.65}
-.visits-list{display:flex;flex-direction:column;gap:0}
-.visit-item{display:flex;align-items:flex-start;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);}
-.visit-item:last-child{border-bottom:none}
-.visit-date{min-width:70px;font-size:12px;font-weight:500;color:var(--ink3);letter-spacing:0.3px;padding-top:2px;}
-.visit-content h4{font-size:15px;font-weight:500;margin-bottom:3px}
-.visit-content p{font-size:13px;color:var(--ink2);line-height:1.6}
-.langs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
-.lang-card{border:1px solid var(--line);padding:20px;background:var(--surface);}
-.lang-name{font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:6px}
-.lang-level{font-size:12px;color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:0.8px}
-.lang-dots{display:flex;gap:5px;margin-top:12px}
-.lang-dot{width:10px;height:3px;background:var(--line);border-radius:1px}
-.lang-dot.filled{background:var(--accent)}
-.contact-block{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-.contact-big{font-family:var(--serif);font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-1px;line-height:1.1;margin-bottom:24px;}
-.contact-big em{color:var(--accent);font-style:italic}
-.contact-details{display:flex;flex-direction:column;gap:16px}
-.contact-item{display:flex;flex-direction:column;gap:2px}
-.contact-item span:first-child{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3)}
-.contact-item a,.contact-item span:last-child{font-size:15px;color:var(--ink);font-weight:500;text-decoration:none;}
-.contact-item a:hover{color:var(--accent)}
-footer{text-align:center;padding:32px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3);letter-spacing:0.5px;}
-@media(max-width:640px){
-  nav{padding:14px 20px}.nav-links{gap:16px}
-  section,.hero{padding:60px 20px}
-  .tl-item{grid-template-columns:1fr;gap:8px}
-  .contact-block{grid-template-columns:1fr}
+.tl-left{display:flex;flex-direction:column;gap:6px}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:0.5px}
+.tl-tag{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--hi);border:1px solid var(--hi);padding:2px 8px;width:fit-content;opacity:0.7;}
+.tl-body h3{font-size:16px;font-weight:400;color:var(--ink);margin-bottom:4px;letter-spacing:-0.3px}
+.tl-org{font-size:12px;color:var(--ink3);margin-bottom:16px;letter-spacing:0.3px}
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tl-bullets li{font-size:13px;color:var(--ink2);line-height:1.7;padding-left:16px;position:relative;}
+.tl-bullets li::before{content:'—';position:absolute;left:0;color:var(--ink3);font-size:11px;top:3px;}
+.edu-list{display:flex;flex-direction:column}
+.edu-item{display:grid;grid-template-columns:160px 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--line);}
+.edu-item:last-child{border-bottom:none}
+.edu-date{font-family:var(--mono);font-size:11px;color:var(--ink3)}
+.edu-body h3{font-size:16px;font-weight:400;color:var(--ink);margin-bottom:4px;letter-spacing:-0.3px}
+.edu-inst{font-size:12px;color:var(--ink3);margin-bottom:8px}
+.edu-note{font-size:12px;color:var(--ink3);line-height:1.6;font-style:italic}
+.edu-grade{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:11px;color:var(--hi);border:1px solid var(--hi);padding:2px 8px;opacity:0.7;}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line)}
+.proj-card{background:var(--bg);padding:32px;transition:background 0.15s;}
+.proj-card:hover{background:var(--bg2)}
+.proj-n{font-family:var(--mono);font-size:11px;color:var(--ink3);margin-bottom:20px}
+.proj-course{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--hi);margin-bottom:12px;opacity:0.7;}
+.proj-title{font-size:15px;font-weight:400;color:var(--ink);line-height:1.4;margin-bottom:12px;letter-spacing:-0.2px}
+.proj-desc{font-size:12px;color:var(--ink3);line-height:1.7}
+.visits-grid{display:flex;flex-direction:column}
+.visit-row{display:grid;grid-template-columns:160px 1fr;gap:32px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start;}
+.visit-row:last-child{border-bottom:none}
+.visit-date{font-family:var(--mono);font-size:11px;color:var(--ink3);padding-top:2px}
+.visit-content h4{font-size:14px;font-weight:400;color:var(--ink);margin-bottom:4px}
+.visit-content p{font-size:12px;color:var(--ink3);line-height:1.7}
+.langs-row{display:flex;gap:0;border:1px solid var(--line)}
+.lang-item{flex:1;padding:28px 24px;border-right:1px solid var(--line);}
+.lang-item:last-child{border-right:none}
+.lang-name{font-size:15px;font-weight:400;color:var(--ink);margin-bottom:4px}
+.lang-level{font-size:11px;color:var(--ink3);letter-spacing:0.5px;margin-bottom:16px}
+.lang-bar{display:flex;gap:3px;margin-top:12px}
+.lang-seg{height:2px;flex:1;background:var(--line)}
+.lang-seg.on{background:var(--hi)}
+.contact-block{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-big{font-size:clamp(32px,4vw,56px);font-weight:300;letter-spacing:-1.5px;line-height:1.05;color:var(--ink);margin-bottom:8px;}
+.contact-big em{color:var(--ink3);font-style:normal}
+.contact-sub{font-size:13px;color:var(--ink3);margin-top:20px;line-height:1.7;max-width:280px}
+.contact-items{display:flex;flex-direction:column}
+.contact-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);}
+.contact-row:last-child{border-bottom:none}
+.contact-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--ink3)}
+.contact-val{font-size:13px;color:var(--ink2);text-decoration:none;transition:color 0.15s}
+.contact-val:hover{color:var(--ink)}
+footer{padding:32px 48px;display:flex;justify-content:space-between;align-items:center;}
+.footer-l{font-family:var(--mono);font-size:11px;color:var(--ink3)}
+.footer-r{font-size:11px;color:var(--ink3)}
+@media(max-width:680px){
+  nav{padding:16px 24px}.nav-links{gap:20px}
+  .hero{padding:0 24px 60px}.hero h1{font-size:40px;letter-spacing:-1px}
+  .hero-row{flex-direction:column;align-items:flex-start}
+  .hero-meta{flex-direction:row;gap:32px}.hero-stat{text-align:left}
+  .wrap{padding:0 24px}
+  .skill-row,.tl-item,.edu-item,.visit-row{grid-template-columns:1fr;gap:12px}
+  .proj-grid{grid-template-columns:1fr}
+  .langs-row{flex-wrap:wrap}
+  .lang-item{border-right:none;border-bottom:1px solid var(--line)}
+  .contact-block{grid-template-columns:1fr;gap:40px}
+  footer{padding:24px;flex-direction:column;gap:8px;text-align:center}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-name">D. Lampos</div>
+  <div class="nav-logo">DL — 2026</div>
   <div class="nav-links">
-    <a onclick="go('about')">About</a>
-    <a onclick="go('experience')">Experience</a>
-    <a onclick="go('projects-sec')">Projects</a>
+    <a onclick="go('skills')">Skills</a>
+    <a onclick="go('exp')">Experience</a>
+    <a onclick="go('edu')">Education</a>
+    <a onclick="go('proj')">Projects</a>
     <a onclick="go('contact')">Contact</a>
   </div>
 </nav>
 
-<div class="hero" id="about">
-  <div class="hero-eyebrow">Mechanical Engineering · NTUA</div>
-  <h1>Dimitrios<br><em>Lampos</em></h1>
-  <p class="hero-bio">5th-year Mechanical Engineering student at NTUA with hands-on experience in FEA, additive manufacturing, and computational modeling. Currently a Student Intern at the University of New Hampshire, researching crystal plasticity in dual-phase steels.</p>
-  <div class="hero-cta">
-    <button class="btn-primary" onclick="go('contact')">Get in touch</button>
-    <button class="btn-ghost" onclick="go('projects-sec')">View projects</button>
-  </div>
-  <div class="hero-meta">
-    <div class="hero-stat"><span>4+</span><span>Years at NTUA</span></div>
-    <div class="hero-stat"><span>8+</span><span>Major Projects</span></div>
-    <div class="hero-stat"><span>4</span><span>Languages</span></div>
+<div class="hero" id="top">
+  <div class="hero-counter">001 / INTRO</div>
+  <h1>Dimitrios<br><span>Lampos</span></h1>
+  <div class="hero-row">
+    <p class="hero-bio">
+      5th-year Mechanical Engineering student at <strong>NTUA</strong>,
+      currently interning at <strong>University of New Hampshire</strong>.
+      Focused on FEA, crystal plasticity modeling, and additive manufacturing.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <span class="hero-stat-n">4+</span>
+        <span class="hero-stat-l">Years NTUA</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-n">5+</span>
+        <span class="hero-stat-l">Projects</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-n">4</span>
+        <span class="hero-stat-l">Languages</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<section id="skills-sec">
-  <div class="section-label">What I work with</div>
-  <div class="skills-grid">
-    <div class="skill-cat">
-      <h4>Simulation & FEA</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Ansys</span><span class="skill-tag">Abaqus</span>
-        <span class="skill-tag">UMAT</span><span class="skill-tag">FEA</span>
+<div class="wrap">
+
+<section id="skills">
+  <div class="sec-header">
+    <span class="sec-num">002</span>
+    <span class="sec-title">Skills</span>
+  </div>
+  <div class="skills-list">
+    <div class="skill-row">
+      <div class="skill-cat-name">Simulation & FEA</div>
+      <div class="skill-items">
+        <span class="skill-item">Ansys</span>
+        <span class="skill-item">Abaqus</span>
+        <span class="skill-item">UMAT</span>
+        <span class="skill-item">FEA</span>
+        <span class="skill-item">Crystal Plasticity</span>
       </div>
     </div>
-    <div class="skill-cat">
-      <h4>CAD & Design</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">SolidWorks</span><span class="skill-tag">Autodesk Inventor</span>
-        <span class="skill-tag">CAM</span>
+    <div class="skill-row">
+      <div class="skill-cat-name">CAD & Design</div>
+      <div class="skill-items">
+        <span class="skill-item">SolidWorks</span>
+        <span class="skill-item">Autodesk Inventor</span>
+        <span class="skill-item">CAM</span>
       </div>
     </div>
-    <div class="skill-cat">
-      <h4>Programming</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">MATLAB</span><span class="skill-tag">Python</span>
-        <span class="skill-tag">C</span><span class="skill-tag">R</span>
+    <div class="skill-row">
+      <div class="skill-cat-name">Programming</div>
+      <div class="skill-items">
+        <span class="skill-item">MATLAB</span>
+        <span class="skill-item">Python</span>
+        <span class="skill-item">C</span>
+        <span class="skill-item">R</span>
       </div>
     </div>
-    <div class="skill-cat">
-      <h4>Manufacturing</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">3D Printing</span><span class="skill-tag">Additive Mfg</span>
-        <span class="skill-tag">Prototyping</span><span class="skill-tag">Machining</span>
+    <div class="skill-row">
+      <div class="skill-cat-name">Manufacturing</div>
+      <div class="skill-items">
+        <span class="skill-item">3D Printing</span>
+        <span class="skill-item">Additive Mfg</span>
+        <span class="skill-item">Prototyping</span>
+        <span class="skill-item">Machining</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="experience">
-  <div class="section-label">Training & Research</div>
+<section id="exp">
+  <div class="sec-header">
+    <span class="sec-num">003</span>
+    <span class="sec-title">Experience</span>
+  </div>
   <div class="timeline">
+
     <div class="tl-item">
-      <div class="tl-date">Jun 2025 –<br>Present</div>
+      <div class="tl-left">
+        <div class="tl-date">Feb 2026 — Now</div>
+        <div class="tl-tag">Active</div>
+      </div>
+      <div class="tl-body">
+        <h3>Diploma Thesis</h3>
+        <div class="tl-org">University of New Hampshire · Durham, NH, USA</div>
+        <ul class="tl-bullets">
+          <li>Research conducted in collaboration with UNH as part of the NTUA integrated master's degree</li>
+          <li>Building on crystal plasticity modeling work developed during the internship</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-date">Jun 2025 — Now</div>
+        <div class="tl-tag">Active</div>
+      </div>
       <div class="tl-body">
         <h3>Student Intern</h3>
         <div class="tl-org">University of New Hampshire · Durham, NH, USA</div>
         <ul class="tl-bullets">
-          <li>Developing FE simulations for dual-phase steel B-pillar structures using Abaqus coupled with UMAT for crystal plasticity modeling</li>
-          <li>Modeling microstructure evolution, material property gradients and springback behavior to optimize ductility and strength</li>
+          <li>FE simulations for dual-phase steel B-pillar structures using Abaqus + UMAT for crystal plasticity</li>
+          <li>Modeling microstructure evolution, material property gradients and springback behavior</li>
           <li>Designing complex meshes for high-demand crystal plasticity simulations</li>
-          <li>Presenting progress in weekly meetings and contributing to simulation tool development</li>
+          <li>Weekly progress presentations, contributing to simulation tool development</li>
         </ul>
       </div>
     </div>
+
     <div class="tl-item">
-      <div class="tl-date">Oct 2023 –<br>Oct 2024</div>
+      <div class="tl-left">
+        <div class="tl-date">Oct 2023 — Sep 2024</div>
+      </div>
       <div class="tl-body">
         <h3>Student Researcher</h3>
-        <div class="tl-org">Rapid Prototyping Lab · NTUA, Athens, Greece</div>
+        <div class="tl-org">Rapid Prototyping & Tooling Lab · NTUA, Athens</div>
         <ul class="tl-bullets">
           <li>Evaluated 3D printer output consistency across varied operational settings</li>
           <li>Analyzed performance and accuracy of multiple 3D printing technologies</li>
-          <li>Developed expertise in 3D printer operation, print job management, and troubleshooting</li>
+          <li>Expert-level printer operation, job management, and troubleshooting</li>
         </ul>
       </div>
     </div>
+
     <div class="tl-item">
-      <div class="tl-date">Oct 2022 –<br>Jul 2023</div>
+      <div class="tl-left">
+        <div class="tl-date">Oct 2022 — Sep 2023</div>
+      </div>
       <div class="tl-body">
         <h3>Manufacturing Engineer</h3>
-        <div class="tl-org">PromRacing NTUA FSAE Team · Athens, Greece</div>
+        <div class="tl-org">PromRacing NTUA FSAE Team · Athens</div>
         <ul class="tl-bullets">
-          <li>Contributed to design and fabrication of the Formula Student car chassis</li>
-          <li>Performed material cutting and machining, operating a lathe for precision components</li>
-          <li>Collaborated on chassis–system integration, optimizing for weight and durability</li>
+          <li>Design and fabrication of the Formula Student car chassis</li>
+          <li>Material cutting, machining, and lathe operation for precision components</li>
+          <li>Chassis–system integration optimized for weight and durability</li>
         </ul>
       </div>
     </div>
+
   </div>
 </section>
 
-<section id="projects-sec">
-  <div class="section-label">Academic Projects</div>
-  <div class="projects-grid">
+<section id="edu">
+  <div class="sec-header">
+    <span class="sec-num">004</span>
+    <span class="sec-title">Education</span>
+  </div>
+  <div class="edu-list">
+
+    <div class="edu-item">
+      <div class="edu-date">2021 — 2026</div>
+      <div class="edu-body">
+        <h3>Diploma of Engineering (MEng)</h3>
+        <div class="edu-inst">National Technical University of Athens · Mechanical Engineering</div>
+        <div class="edu-note">Integrated Master's degree (5 years) · Level 7, National & European Qualifications Framework · 300 ECTS<br>Activities: Formula Student Team, Rapid Prototyping & Tooling Lab</div>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-date">2008 — 2020</div>
+      <div class="edu-body">
+        <h3>High School Diploma</h3>
+        <div class="edu-inst">Lycée Léonin de Nea Smyrni · Athens, Greece</div>
+        <span class="edu-grade">19.2 / 20</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="proj">
+  <div class="sec-header">
+    <span class="sec-num">005</span>
+    <span class="sec-title">Projects</span>
+  </div>
+  <div class="proj-grid">
     <div class="proj-card">
-      <div class="proj-num">01</div>
+      <div class="proj-n">01 / 05</div>
+      <div class="proj-course">NTUA — 2025</div>
+      <div class="proj-title">Design and Calculation of an Automatic Truck Loading System</div>
+      <p class="proj-desc">Mechanical design and engineering calculations for an automated truck loading system. Associated with NTUA, Jun–Oct 2025.</p>
+    </div>
+    <div class="proj-card">
+      <div class="proj-n">02 / 05</div>
       <div class="proj-course">Signal Processing</div>
-      <div class="proj-title">Vibration Analysis of a Passenger Ship Propulsion System</div>
-      <p class="proj-desc">Collected data from 6 points in 3 directions at 870 & 910 rpm. Applied FFT, wavelet transforms, RMS, kurtosis, and skewness for fault detection.</p>
+      <div class="proj-title">Vibration Analysis — Passenger Ship Propulsion System</div>
+      <p class="proj-desc">6 measurement points, 3 directions, 870 & 910 rpm. FFT, wavelet transforms, RMS, kurtosis and skewness for mechanical fault detection.</p>
     </div>
     <div class="proj-card">
-      <div class="proj-num">02</div>
+      <div class="proj-n">03 / 05</div>
       <div class="proj-course">ME Design</div>
-      <div class="proj-title">Innovative Femoral Fracture Fixation Device</div>
-      <p class="proj-desc">Biomechanical FEA in ANSYS, parametric CAD design, cost analysis under €3000 budget, compliance with biomedical standards.</p>
+      <div class="proj-title">Femoral Fracture Fixation Device</div>
+      <p class="proj-desc">Biomechanical FEA in ANSYS, parametric CAD, full cost analysis under €3000 budget, biomedical standards compliance.</p>
     </div>
     <div class="proj-card">
-      <div class="proj-num">03</div>
+      <div class="proj-n">04 / 05</div>
       <div class="proj-course">Machine Elements 1</div>
-      <div class="proj-title">Uniaxial Testing Machine Design</div>
-      <p class="proj-desc">Designed grips and critical components for tensile-compression and torsion testing. Performed strength, stiffness, and thermal behavior calculations.</p>
+      <div class="proj-title">Uniaxial Tensile-Compression & Torsion Testing Machine</div>
+      <p class="proj-desc">Grip and component design for controlled-temperature testing. Strength, stiffness, and thermal behavior calculations.</p>
     </div>
     <div class="proj-card">
-      <div class="proj-num">04</div>
+      <div class="proj-n">05 / 05</div>
       <div class="proj-course">Machine Elements 2</div>
-      <div class="proj-title">Power Transmission System for an EV</div>
-      <p class="proj-desc">Full drivetrain design: gears, shafts, differential, dual clutches. Optimized energy efficiency and vehicle dynamics during acceleration and braking.</p>
+      <div class="proj-title">EV Power Transmission System</div>
+      <p class="proj-desc">Full drivetrain: gears, shafts, differential, dual clutches. Optimized force distribution for improved dynamics and efficiency.</p>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="section-label">Industry Exposure</div>
-  <div class="visits-list">
-    <div class="visit-item">
+  <div class="sec-header">
+    <span class="sec-num">006</span>
+    <span class="sec-title">Industry Visits</span>
+  </div>
+  <div class="visits-grid">
+    <div class="visit-row">
       <div class="visit-date">Apr 2024</div>
       <div class="visit-content">
-        <h4>Mercedes-Benz Plant & BMW Group Plant</h4>
-        <p>Stuttgart & Munich, Germany — Assembly line operations, quality assurance and advanced vehicle manufacturing technologies.</p>
+        <h4>Mercedes-Benz & BMW — Stuttgart & Munich</h4>
+        <p>Assembly line operations, quality assurance processes, and advanced automotive manufacturing technologies.</p>
       </div>
     </div>
-    <div class="visit-item">
+    <div class="visit-row">
       <div class="visit-date">Apr 2024</div>
       <div class="visit-content">
-        <h4>Audi Forum & Perfect Finish GmbH</h4>
-        <p>Ingolstadt & Stuttgart, Germany — Strategic production planning, battery cell manufacturing and surface finishing technologies.</p>
+        <h4>Audi Forum & Perfect Finish GmbH — Ingolstadt & Stuttgart</h4>
+        <p>Strategic production planning, PowerCo battery cell manufacturing, surface finishing technologies.</p>
       </div>
     </div>
-    <div class="visit-item">
+    <div class="visit-row">
       <div class="visit-date">May 2024</div>
       <div class="visit-content">
-        <h4>Alumil S.A.</h4>
-        <p>Athens, Greece — Energy-efficient building solutions and high-performance material integration in architectural design.</p>
+        <h4>Alumil S.A. — Athens</h4>
+        <p>Energy-efficient building solutions and high-performance material integration in architectural design.</p>
       </div>
     </div>
-    <div class="visit-item">
+    <div class="visit-row">
       <div class="visit-date">Mar 2019</div>
       <div class="visit-content">
-        <h4>CERN — Large Hadron Collider</h4>
-        <p>Geneva, Switzerland — Selected among 50 students for an educational tour of the LHC facilities.</p>
+        <h4>CERN — Geneva</h4>
+        <p>Selected among 50 students for an educational tour of the Large Hadron Collider.</p>
       </div>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="section-label">Languages</div>
-  <div class="langs-grid">
-    <div class="lang-card">
+  <div class="sec-header">
+    <span class="sec-num">007</span>
+    <span class="sec-title">Languages</span>
+  </div>
+  <div class="langs-row">
+    <div class="lang-item">
       <div class="lang-name">Greek</div>
       <div class="lang-level">Native</div>
-      <div class="lang-dots">
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-        <div class="lang-dot filled"></div>
+      <div class="lang-bar">
+        <div class="lang-seg on"></div><div class="lang-seg on"></div>
+        <div class="lang-seg on"></div><div class="lang-seg on"></div>
+        <div class="lang-seg on"></div>
       </div>
     </div>
-    <div class="lang-card">
+    <div class="lang-item">
       <div class="lang-name">English</div>
       <div class="lang-level">Professional</div>
-      <div class="lang-dots">
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-        <div class="lang-dot filled"></div>
+      <div class="lang-bar">
+        <div class="lang-seg on"></div><div class="lang-seg on"></div>
+        <div class="lang-seg on"></div><div class="lang-seg on"></div>
+        <div class="lang-seg on"></div>
       </div>
     </div>
-    <div class="lang-card">
+    <div class="lang-item">
       <div class="lang-name">French</div>
       <div class="lang-level">Professional</div>
-      <div class="lang-dots">
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-        <div class="lang-dot filled"></div>
+      <div class="lang-bar">
+        <div class="lang-seg on"></div><div class="lang-seg on"></div>
+        <div class="lang-seg on"></div><div class="lang-seg on"></div>
+        <div class="lang-seg on"></div>
       </div>
     </div>
-    <div class="lang-card">
+    <div class="lang-item">
       <div class="lang-name">German</div>
       <div class="lang-level">Limited Working</div>
-      <div class="lang-dots">
-        <div class="lang-dot filled"></div><div class="lang-dot filled"></div>
-        <div class="lang-dot filled"></div>
-        <div class="lang-dot"></div><div class="lang-dot"></div>
+      <div class="lang-bar">
+        <div class="lang-seg on"></div><div class="lang-seg on"></div>
+        <div class="lang-seg on"></div>
+        <div class="lang-seg"></div><div class="lang-seg"></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" style="border-bottom:none">
+  <div class="sec-header">
+    <span class="sec-num">008</span>
+    <span class="sec-title">Contact</span>
+  </div>
   <div class="contact-block">
     <div>
-      <div class="section-label">Contact</div>
-      <div class="contact-big">Let's work<br><em>together.</em></div>
-      <p style="color:var(--ink2);font-size:14px;max-width:340px;line-height:1.7">Open to research collaborations, internships, and engineering opportunities.</p>
+      <div class="contact-big">Let's<br>work<br><em>together.</em></div>
+      <p class="contact-sub">Open to research collaborations, internships, and engineering opportunities worldwide.</p>
     </div>
-    <div class="contact-details">
-      <div class="contact-item">
-        <span>Email</span>
-        <a href="mailto:dimitrioslmp@gmail.com">dimitrioslmp@gmail.com</a>
+    <div class="contact-items">
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <a class="contact-val" href="mailto:dimitrioslmp@gmail.com">dimitrioslmp@gmail.com</a>
       </div>
-      <div class="contact-item">
-        <span>Phone</span>
-        <span>+30 698 009 9790</span>
+      <div class="contact-row">
+        <span class="contact-label">Phone</span>
+        <span class="contact-val">+30 698 009 9790</span>
       </div>
-      <div class="contact-item">
-        <span>Location</span>
-        <span>Athens, Greece</span>
+      <div class="contact-row">
+        <span class="contact-label">Location</span>
+        <span class="contact-val">Athens, Greece</span>
       </div>
-      <div class="contact-item">
-        <span>LinkedIn</span>
-        <a href="https://linkedin.com/in/dimitrislampos" target="_blank">linkedin.com/in/dimitrislampos</a>
+      <div class="contact-row">
+        <span class="contact-label">LinkedIn</span>
+        <a class="contact-val" href="https://www.linkedin.com/in/dimitrios-lampos-6249241b3/" target="_blank">linkedin.com/in/dimitrios-lampos</a>
       </div>
     </div>
   </div>
 </section>
 
-<footer>© 2026 Dimitrios Lampos · Mechanical Engineering · NTUA</footer>
+</div>
+
+<footer>
+  <span class="footer-l">Dimitrios Lampos — ME Student, NTUA</span>
+  <span class="footer-r">© 2026</span>
+</footer>
 
 <script>
 function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
